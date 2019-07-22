@@ -17,12 +17,14 @@ function App() {
     setCart( [...cart, item] );
   };
 
+  const removeItem = id => setCart(cart.filter(item => item.id !== id));
+
   return (
     <ProductProvider value={{
       products,
       addItem
     }}>
-      <CartProvider value={cart}>
+      <CartProvider value={{cart, removeItem}}>
         <div className="App">
           <Navigation cart={cart} />
 
